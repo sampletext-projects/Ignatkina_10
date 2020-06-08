@@ -5,6 +5,15 @@
 
 using namespace std;
 
+void write_mas(int* m, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		cout << m[i] << " ";
+	}
+	cout << "\n";
+}
+
 //функция для определения количества строк в файле
 int get_file_lines(string& file)
 {
@@ -129,8 +138,10 @@ int main()
 	}
 	else
 	{
-		append_file(history_file, matrix[best_index]); // добавляем лучший результат в историю
 		cout << "Лучший участник найден и записан в историю!\n";
+		cout << "Результаты его теста: ";
+		write_mas(matrix[best_index], 15);
+		append_file(history_file, matrix[best_index]); // добавляем лучший результат в историю
 	}
 
 	system("pause");
