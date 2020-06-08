@@ -1,4 +1,4 @@
-#include <iomanip>
+﻿#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -10,6 +10,10 @@ int get_file_lines(string& file)
 {
 	int count = 0;
 	ifstream f(file);
+	if (!f.good())
+	{
+		return 0;
+	}
 	while (!f.eof()) //открываем файл
 	{
 		string v;
@@ -109,6 +113,11 @@ int main()
 	string history_file = "h.txt"; //файл многолетней истории
 
 	int total_lines = get_file_lines(today_file); //количество участников
+
+	if (total_lines == 0)
+	{
+		cout << "Файл текущих соревнований не найден, либо пуст!\n";
+	}
 
 	int** matrix = new int*[total_lines]; //матрица (указатель на строки)
 	read_file(today_file, matrix, total_lines); //читаем файл
